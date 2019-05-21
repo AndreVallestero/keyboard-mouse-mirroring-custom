@@ -9,7 +9,7 @@ from ctypes import windll
 port = 46331
 serverIp = "192.168.1.2"
 
-targetKeys = [(0x01), # VK_LBUTTON
+targetKeys = ((0x01, -1), # VK_LBUTTON
             (0x11, 29), # VK_CONTROL
             (0x31, 2),  # 1
             (0x32, 3),  # 2
@@ -23,7 +23,7 @@ targetKeys = [(0x01), # VK_LBUTTON
             (0x45, 18), # E
             (0x52, 19), # R
             (0x54, 20), # T
-            (0x59, 21)] # Y
+            (0x59, 21)) # Y
 
 wapi = windll.user32
 

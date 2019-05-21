@@ -10,7 +10,7 @@ class POINT(Structure):
 pollRate = 60 # How many times per second to check and send mouse and keyboard state
 port = 46331 # Local port that server will be hosted on
 mirrorToggleKey = 0x4C # L , The key that will toggle mirroring on or off
-pollKeys = [0x01, # VK_LBUTTON
+pollKeys = (0x01, # VK_LBUTTON
             0x11, # VK_CONTROL
             0x31, # 1
             0x32, # 2
@@ -24,7 +24,7 @@ pollKeys = [0x01, # VK_LBUTTON
             0x45, # E
             0x52, # R
             0x54, # T
-            0x59] # Y
+            0x59) # Y
 
 wapi = windll.user32 # win32api module
 
