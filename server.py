@@ -7,6 +7,8 @@ import win32api
 # Config variables
 pollRate = 60 # How many times per second to check and send mouse and keyboard state
 port = 46331 # Local port that server will be hosted on
+mirrorToggleKey = 0x4C # L
+
 pollKeys = [0x01, # VK_LBUTTON
             0x11, # VK_CONTROL
             0x70, # VK_F1
@@ -19,6 +21,9 @@ pollKeys = [0x01, # VK_LBUTTON
 
 pollInterval = 1 / pollRate
 pollTime = 0
+
+isMirroring = 0
+prevMtkState = 0
 
 # Create and bind socket to port
 s = socket.socket()
@@ -35,7 +40,15 @@ while True:
     currTime = time.time()
     if currTime > pollTime:
         pollTime = currTime + pollInterval
-        
+
+        # Manage mirroring toggle
+        mtkState = win32api.GetKeyState(mirrorToggleKey) < 0
+        if prevMtkState < mtkState:
+            isMirroring = not isMirroring
+            print("Mirroring state =", isMirroring)
+        prevMtkState = mtkState
+        if not isMirroring: continue
+
         # Gather mouse data
         posX, posY = win32api.GetCursorPos()
         mouseData = "{},{},".format(posX, posY)
