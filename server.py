@@ -6,17 +6,10 @@ from ctypes import windll, Structure, c_long, byref
 class POINT(Structure):
     _fields_ = [("x", c_long), ("y", c_long)]
 
-
-wapi = windll.user32 # win32api module
-
-mousePos = POINT()
-
-
 # Config variables
 pollRate = 60 # How many times per second to check and send mouse and keyboard state
 port = 46331 # Local port that server will be hosted on
-mirrorToggleKey = 0x4C # L
-
+mirrorToggleKey = 0x4C # L , The key that will toggle mirroring on or off
 pollKeys = [0x01, # VK_LBUTTON
             0x11, # VK_CONTROL
             0x70, # VK_F1
@@ -26,6 +19,10 @@ pollKeys = [0x01, # VK_LBUTTON
             0x74, # VK_F5
             0x75, # VK_F6
             0x76] # VK_F7
+
+wapi = windll.user32 # win32api module
+
+mousePos = POINT()
 
 pollInterval = 1 / pollRate
 pollTime = 0
@@ -64,17 +61,10 @@ while True:
         # Gather keyboard data
         keyboardData = ""
         for key in pollKeys:
-            
             keyState = wapi.GetKeyState(key) not in (0, 1)
             keyboardData += str(int(keyState))
         
         # Format data
         byteData = str(mouseData + keyboardData).encode("utf8")
         # Send data
-        print(byteData)
         client.send(byteData)
-    
-        
-
-
-    
