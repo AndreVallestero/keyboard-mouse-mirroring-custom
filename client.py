@@ -2,7 +2,7 @@
 # Key scan code reference: https://msdn.microsoft.com/en-us/ie/aa299374(v=vs.100)
 # VK code reference: https://docs.microsoft.com/en-us/windows/desktop/inputdev/virtual-key-codes
 
-import socket, 
+import socket
 from ctypes import windll
 
 # Config variables
