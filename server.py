@@ -12,13 +12,19 @@ port = 46331 # Local port that server will be hosted on
 mirrorToggleKey = 0x4C # L , The key that will toggle mirroring on or off
 pollKeys = [0x01, # VK_LBUTTON
             0x11, # VK_CONTROL
-            0x70, # VK_F1
-            0x71, # VK_F2
-            0x72, # VK_F3
-            0x73, # VK_F4
-            0x74, # VK_F5
-            0x75, # VK_F6
-            0x76] # VK_F7
+            0x31, # 1
+            0x32, # 2
+            0x33, # 3
+            0x34, # 4
+            0x35, # 5
+            0x36, # 6
+            0x37, # 7
+            0x51, # Q
+            0x57, # W
+            0x45, # E
+            0x52, # R
+            0x54, # T
+            0x59] # Y
 
 wapi = windll.user32 # win32api module
 
