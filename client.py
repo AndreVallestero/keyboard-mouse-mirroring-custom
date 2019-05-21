@@ -40,7 +40,7 @@ while True:
         posY = int(data[1]) #* (768 / 1080)
         #posX = int(posX)
         #posY = int(posY)
-        wapi.SetCursorPos((posX, posY))
+        wapi.SetCursorPos(posX, posY)
 
         # Press keys
         keyStates = [int(keyState) for keyState in data[2][0:numKeys]]
