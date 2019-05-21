@@ -7,7 +7,7 @@ from ctypes import windll
 
 # Config variables
 port = 46331
-serverIp = "192.168.1.2lllllllll"
+serverIp = "192.168.1.2"
 
 targetKeys = [(0x01), # VK_LBUTTON
             (0x11, 29), # VK_CONTROL
