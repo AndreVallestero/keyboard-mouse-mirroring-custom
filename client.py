@@ -2,6 +2,8 @@
 # Key scan code reference: https://msdn.microsoft.com/en-us/ie/aa299374(v=vs.100)
 # VK code reference: https://docs.microsoft.com/en-us/windows/desktop/inputdev/virtual-key-codes
 
+# TODO: change to ctypes to remove win32api dependency
+
 import socket
 import win32api
 
@@ -9,17 +11,7 @@ import win32api
 port = 46331
 serverIp = "127.0.0.1"
 
-pollKeys = [0x01, # VK_LBUTTON
-            0x11, # VK_CONTROL
-            0x70, # VK_F1
-            0x71, # VK_F2
-            0x72, # VK_F3
-            0x73, # VK_F4
-            0x74, # VK_F5
-            0x75, # VK_F6
-            0x76] # VK_F7
-
-targetKeys = [0x01, # VK_LBUTTON
+targetKeys = [(0x01), # VK_LBUTTON
             (0x11, 29), # VK_CONTROL
             (0x51, 16), # Q
             (0x57, 17), # W
@@ -30,7 +22,7 @@ targetKeys = [0x01, # VK_LBUTTON
             (0x31, 2)]  # 1
 
 
-numKeys = len(pollKeys)
+numKeys = len(targetKeys)
 
 oldKeyStates = [0] * numKeys
 
@@ -60,9 +52,9 @@ while True:
             if action == 1: continue
 
             # Mouse specific handling
-            if pollKeys[i] == 0x01: # Left mouse button offset 2
+            if targetKeys[i][0] == 0x01: # Left mouse button offset 2
                 win32api.mouse_event(2 + action, posX, posY, 0, 0)
-            elif pollKeys[i] == 0x02: # Right mouse button offset 8    
+            elif targetKeys[i][0] == 0x02: # Right mouse button offset 8    
                 win32api.mouse_event(8 + action, posX, posY, 0, 0)
             else:
                 win32api.keybd_event(targetKeys[i][0], targetKeys[i][1], action, 0)

@@ -1,8 +1,16 @@
 # python 3.6
 
-import socket
-import time
-import win32api
+import socket, time
+from ctypes import windll, Structure, c_long, byref
+
+class POINT(Structure):
+    _fields_ = [("x", c_long), ("y", c_long)]
+
+
+wapi = windll.user32 # win32api module
+
+mousePos = POINT()
+
 
 # Config variables
 pollRate = 60 # How many times per second to check and send mouse and keyboard state
@@ -22,7 +30,7 @@ pollKeys = [0x01, # VK_LBUTTON
 pollInterval = 1 / pollRate
 pollTime = 0
 
-isMirroring = 0
+isMirroring = 1
 prevMtkState = 0
 
 # Create and bind socket to port
@@ -42,7 +50,7 @@ while True:
         pollTime = currTime + pollInterval
 
         # Manage mirroring toggle
-        mtkState = win32api.GetKeyState(mirrorToggleKey) < 0
+        mtkState = wapi.GetKeyState(mirrorToggleKey) not in (0, 1)
         if prevMtkState < mtkState:
             isMirroring = not isMirroring
             print("Mirroring state =", isMirroring)
@@ -50,18 +58,20 @@ while True:
         if not isMirroring: continue
 
         # Gather mouse data
-        posX, posY = win32api.GetCursorPos()
-        mouseData = "{},{},".format(posX, posY)
+        wapi.GetCursorPos(byref(mousePos))
+        mouseData = "{},{},".format(mousePos.x, mousePos.y)
 
         # Gather keyboard data
         keyboardData = ""
         for key in pollKeys:
-            keyState = win32api.GetKeyState(key) < 0
+            
+            keyState = wapi.GetKeyState(key) not in (0, 1)
             keyboardData += str(int(keyState))
         
         # Format data
         byteData = str(mouseData + keyboardData).encode("utf8")
         # Send data
+        print(byteData)
         client.send(byteData)
     
         
