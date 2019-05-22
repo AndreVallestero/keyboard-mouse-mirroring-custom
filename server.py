@@ -33,14 +33,14 @@ isMirroring = 1
 prevMtkState = 0
 
 # Create and bind socket to port
-s = socket.socket()
-s.bind(('', port))
-s.listen(16) 
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.bind(('127.0.0.1', port))
 print("KMM successfully started and is listening for connections")
 
 # Accept new clients
-client, addr = s.accept()
+data, addr = s.recvfrom(128)
 print("Connection successfully made with client", addr)
+s.sendto(b"connection established", addr)
 
 while True:
     time.sleep(pollInterval)
@@ -67,4 +67,4 @@ while True:
     byteData = str(mouseData + keyboardData).encode("utf8")
     # Send data
     print(byteData)
-    client.send(byteData)
+    s.sendto(byteData, addr)

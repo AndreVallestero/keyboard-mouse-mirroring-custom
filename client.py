@@ -31,9 +31,9 @@ numKeys = len(targetKeys)
 oldKeyStates = [0] * numKeys
 
 # Create socket and connect to server
-s = socket.socket()
-s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
-s.connect((serverIp, port))
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.sendto(b"client0", (serverIp, port))
+reply, addr = s.recvfrom(128)
 print("KMM successfully connected to server")
 
 while True:
@@ -42,7 +42,7 @@ while True:
     try:
         # Move mouse
         # Uncomment lines below for different server/client resolutions
-        posX = int(data[0]) #* (1366 / 1920)
+        posX = int(data[0]) #* (1366 / 1920)l
         posY = int(data[1]) #* (768 / 1080)
         #posX = int(posX)
         #posY = int(posY)
