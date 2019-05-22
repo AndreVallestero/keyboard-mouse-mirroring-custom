@@ -25,16 +25,16 @@ targetKeys = ((0x01, -1), # VK_LBUTTON
             (0x54, 20), # T
             (0x59, 21)) # Y
 
-wapi = windll.user32
-
-numKeys = len(targetKeys)
-oldKeyStates = [0] * numKeys
-
 # Create socket and connect to server
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.sendto(b"client0", (serverIp, port))
+s.sendto(b"client connecting", (serverIp, port))
+print("Trying to connect to server")
 reply, addr = s.recvfrom(128)
 print("KMM successfully connected to server")
+
+wapi = windll.user32
+numKeys = len(targetKeys)
+oldKeyStates = [0] * numKeys
 
 while True:
     data = str(s.recv(256).decode("utf8")).split(",")

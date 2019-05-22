@@ -26,21 +26,21 @@ pollKeys = (0x01, # VK_LBUTTON
             0x54, # T
             0x59) # Y
 
-wapi = windll.user32 # win32api module
-mousePos = POINT()
-pollInterval = 1 / pollRate
-isMirroring = 1
-prevMtkState = 0
-
 # Create and bind socket to port
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.bind(('127.0.0.1', port))
+s.bind(('localhost', port))
 print("KMM successfully started and is listening for connections")
 
 # Accept new clients
 data, addr = s.recvfrom(128)
 print("Connection successfully made with client", addr)
 s.sendto(b"connection established", addr)
+
+wapi = windll.user32 # win32api module
+mousePos = POINT()
+pollInterval = 1 / pollRate
+isMirroring = 1
+prevMtkState = 0
 
 while True:
     time.sleep(pollInterval)
