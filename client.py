@@ -26,17 +26,20 @@ targetKeys = ((0x01, -1), # VK_LBUTTON
 
 # Create socket and connect to server
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.setblocking(0)
 s.sendto(b"client connecting", (serverIp, port))
 print("Trying to connect to server")
-reply, addr = s.recvfrom(128)
+s.recv(128)
 print("KMM successfully connected to server")
+print(s.gettimeout())
 
 wapi = windll.user32
 numKeys = len(targetKeys)
 oldKeyStates = [0] * numKeys
 
 while True:
-    data = str(s.recv(256).decode("utf8")).split(",")
+    response, addr = s.recvfrom(128)
+    data = str(s.recv(128).decode("utf8")).split(",")
     #print(data)
     try:
         # Move mouse
