@@ -38,10 +38,10 @@ numKeys = len(targetKeys)
 oldKeyStates = [0] * numKeys
 
 while True:
-    response, addr = s.recvfrom(128)
-    data = str(s.recv(128).decode("utf8")).split(",")
-    #print(data)
     try:
+        data = str(s.recv(128).decode("utf8")).split(",")
+        #print(data)
+        
         # Move mouse
         # Uncomment lines below for different server/client resolutions
         posX = int(data[0]) #* (1366 / 1920)l
