@@ -39,14 +39,14 @@ while True:
     try:
         response = s.recv(128)
         if response == b"z":
-            print("Server is sleeping, keeping thread alive")
+            print("Server heartbeat recieved, connection is alive")
             continue
         data = str(response.decode("utf8")).split(",")
         #print(data)
         
         # Move mouse
         # Uncomment lines below for different server/client resolutions
-        posX = int(data[0]) #* (1366 / 1920)l
+        posX = int(data[0]) #* (1366 / 1920)
         posY = int(data[1]) #* (768 / 1080)
         #posX = int(posX)
         #posY = int(posY)

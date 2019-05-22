@@ -56,6 +56,7 @@ while True:
     if not isMirroring:
         currTime = time.time()
         if heartbeatTime < currTime:
+            print("Sending heartbeat to keep connection alive")
             s.sendto(b"z", addr)
             heartbeatTime = currTime + 30
         continue
