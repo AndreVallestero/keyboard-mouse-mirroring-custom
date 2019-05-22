@@ -6,9 +6,8 @@ import socket
 from ctypes import windll
 
 # Config variables
+serverIp = "localhost"
 port = 46331
-serverIp = "192.168.1.2"
-
 targetKeys = ((0x01, -1), # VK_LBUTTON
             (0x11, 29), # VK_CONTROL
             (0x31, 2),  # 1

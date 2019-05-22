@@ -7,8 +7,8 @@ class POINT(Structure):
     _fields_ = [("x", c_long), ("y", c_long)]
 
 # Config variables
-pollRate = 20 # How many times per second to check and send mouse and keyboard state
 port = 46331 # Local port that server will be hosted on
+pollRate = 20 # How many times per second to check and send mouse and keyboard state
 mirrorToggleKey = 0x4C # L , The key that will toggle mirroring on or off
 pollKeys = (0x01, # VK_LBUTTON
             0x11, # VK_CONTROL
