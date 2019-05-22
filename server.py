@@ -4,8 +4,9 @@ import socket, time
 from ctypes import windll, Structure, c_long, byref
 
 # Config variables
+serverIpv4 = '192.168.1.2' # Local system's ipv4 address to send data from
 port = 46331 # Local port that server will be hosted on
-pollRate = 20 # How many times per second to check and send mouse and keyboard state
+pollRate = 60 # How many times per second to check and send mouse and keyboard state
 mirrorToggleKey = 0x4C # L , The key that will toggle mirroring on or off
 pollKeys = (0x01, # VK_LBUTTON
             0x11, # VK_CONTROL
@@ -20,7 +21,7 @@ pollKeys = (0x01, # VK_LBUTTON
             0x57, # W
             0x45, # E
             0x52, # R
-            0x54, # T
+            0x54, # Tl
             0x59) # Y
 
 class POINT(Structure):
@@ -28,7 +29,7 @@ class POINT(Structure):
 
 # Create and bind socket to port
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.bind(('localhost', port))
+s.bind((serverIpv4, port))
 print("KMM successfully started and is listening for connections")
 
 # Accept new clients
