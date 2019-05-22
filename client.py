@@ -29,9 +29,6 @@ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.setblocking(0)
 s.sendto(b"client connecting", (serverIp, port))
 print("Trying to connect to server")
-s.recv(128)
-print("KMM successfully connected to server")
-print(s.gettimeout())
 
 wapi = windll.user32
 numKeys = len(targetKeys)
