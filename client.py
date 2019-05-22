@@ -37,7 +37,11 @@ oldKeyStates = [0] * numKeys
 
 while True:
     try:
-        data = str(s.recv(128).decode("utf8")).split(",")
+        response = s.recv(128)
+        if response == b"z":
+            print("Server is sleeping, keeping thread alive")
+            continue
+        data = str(response.decode("utf8")).split(",")
         #print(data)
         
         # Move mouse

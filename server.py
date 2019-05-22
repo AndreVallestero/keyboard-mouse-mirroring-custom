@@ -42,6 +42,7 @@ mousePos = POINT()
 pollInterval = 1 / pollRate
 isMirroring = 1
 prevMtkState = 0
+heartbeatTime = 0
 
 while True:
     time.sleep(pollInterval)
@@ -52,8 +53,13 @@ while True:
         isMirroring = not isMirroring
         print("Mirroring state =", isMirroring)
     prevMtkState = mtkState
-    if not isMirroring: continue
-    
+    if not isMirroring:
+        currTime = time.time()
+        if heartbeatTime < currTime:
+            s.sendto(b"z", addr)
+            heartbeatTime = currTime + 30
+        continue
+            
     # Gather mouse data
     wapi.GetCursorPos(byref(mousePos))
     mouseData = "{},{},".format(mousePos.x, mousePos.y)
