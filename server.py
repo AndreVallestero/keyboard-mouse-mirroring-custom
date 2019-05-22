@@ -6,7 +6,7 @@ from ctypes import windll, Structure, c_long, byref
 # Config variables
 serverIpv4 = '192.168.1.2' # Local system's ipv4 address to send data from
 port = 46331 # Local port that server will be hosted on
-pollRate = 60 # How many times per second to check and send mouse and keyboard state
+pollRate = 30 # How many times per second to check and send mouse and keyboard state
 mirrorToggleKey = 0x4C # L , The key that will toggle mirroring on or off
 pollKeys = (0x01, # VK_LBUTTON
             0x11, # VK_CONTROL
@@ -67,5 +67,5 @@ while True:
     # Format data
     byteData = str(mouseData + keyboardData).encode("utf8")
     # Send data
-    print(byteData)
+    #print(byteData)
     s.sendto(byteData, addr)

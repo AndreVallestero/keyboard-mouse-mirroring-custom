@@ -37,7 +37,7 @@ oldKeyStates = [0] * numKeys
 
 while True:
     data = str(s.recv(256).decode("utf8")).split(",")
-    print(data)
+    #print(data)
     try:
         # Move mouse
         # Uncomment lines below for different server/client resolutions
