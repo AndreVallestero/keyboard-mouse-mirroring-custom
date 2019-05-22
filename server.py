@@ -3,9 +3,6 @@
 import socket, time
 from ctypes import windll, Structure, c_long, byref
 
-class POINT(Structure):
-    _fields_ = [("x", c_long), ("y", c_long)]
-
 # Config variables
 port = 46331 # Local port that server will be hosted on
 pollRate = 20 # How many times per second to check and send mouse and keyboard state
@@ -25,6 +22,9 @@ pollKeys = (0x01, # VK_LBUTTON
             0x52, # R
             0x54, # T
             0x59) # Y
+
+class POINT(Structure):
+    _fields_ = [("x", c_long), ("y", c_long)]
 
 # Create and bind socket to port
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
