@@ -10,19 +10,19 @@ serverIp = "192.168.1.2"
 port = 46331
 targetKeys = ((0x01, -1), # VK_LBUTTON
             (0x11, 29), # VK_CONTROL
-            (0x31, 2),  # 1
-            (0x32, 3),  # 2
-            (0x33, 4),  # 3
-            (0x34, 5),  # 4
-            (0x35, 6),  # 5
-            (0x36, 7),  # 6
-            (0x37, 8),  # 7
-            (0x51, 16), # Q
-            (0x57, 17), # W
-            (0x45, 18), # E
-            (0x52, 19), # R
-            (0x54, 20), # T
-            (0x59, 21)) # Y
+            (0x41, 30), # A
+            (0x53, 31), # S
+            (0x44, 32), # D
+            (0x46, 33), # F
+            (0x47, 34), # G
+            (0x48, 35), # H
+            (0x5A, 44), # Z
+            (0x58, 45), # X
+            (0x43, 46), # C
+            (0x56, 47), # V
+            (0x52, 48), # B
+            (0x4E, 49), # N
+            (0x4D, 50)) # M
 
 # Create socket and connect to server
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

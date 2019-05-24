@@ -10,19 +10,19 @@ pollRate = 30 # How many times per second to check and send mouse and keyboard s
 mirrorToggleKey = 0x4C # L , The key that will toggle mirroring on or off
 pollKeys = (0x01, # VK_LBUTTON
             0x11, # VK_CONTROL
-            0x31, # 1
-            0x32, # 2
-            0x33, # 3
-            0x34, # 4
-            0x35, # 5
-            0x36, # 6
-            0x37, # 7
-            0x51, # Q
-            0x57, # W
-            0x45, # E
-            0x52, # R
-            0x54, # Tl
-            0x59) # Y
+            0x41, # A
+            0x53, # S
+            0x44, # D
+            0x46, # F
+            0x47, # G
+            0x48, # H
+            0x5A, # Z
+            0x58, # X
+            0x43, # C
+            0x56, # V
+            0x52, # B
+            0x4E, # N
+            0x4D) # M
 
 class POINT(Structure):
     _fields_ = [("x", c_long), ("y", c_long)]
