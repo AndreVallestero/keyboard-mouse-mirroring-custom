@@ -33,7 +33,12 @@ TARGET_KEYS = [(0x01, -1), # VK_LBUTTON
             (0x56, 47), # V
             (0x52, 48), # B
             (0x4E, 49), # N
-            (0x4D, 50)] # M
+            (0x4D, 50), # M
+            (0x57, 17), # W
+            (0x20, 57), # Space Bar
+            (0x51, 16), # Q
+            (0x45, 18), # E
+            (0x52, 19)] # R
 
 MIN_INT = -32767
 TARGET_KEYS.reverse()

@@ -1,7 +1,7 @@
 import socket, time, sys
 from ctypes import windll, Structure, c_long, byref
 
-RECV_ADDR = '192.168.1.2'
+RECV_ADDR = '99.231.254.55'
 RECV_PORT = 46331
 POLL_RATE = 58
 X_RES = 1920
@@ -26,8 +26,9 @@ POLL_KEYS = (0x01, # VK_LBUTTON
             0x56, # V
             0x52, # B
             0x4E, # N
-            0x4D) # M
-
+            0x4D, # M
+            0x57, # W
+            0x20) # Space Bar
 POLL_TIME = 1 / POLL_RATE
 MIN_INT = -32767
 MIN_INT_BYTES = MIN_INT.to_bytes(2, byteorder='little', signed=True)
