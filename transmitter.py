@@ -12,20 +12,20 @@ MOUSE_TOGGLE = 0x4D # M
 COMBO_KEY = 0x30 # 0
 
 # Max 31 keys
-POLL_KEYS = (0x01, # VK_LBUTTON
-            0x11, # VK_CONTROL
-            0x41, # A
-            0x53, # S
-            0x44, # D
-            0x46, # F
-            0x47, # G
-            0x48, # H
-            0x5A, # Z
-            0x58, # X
-            0x43, # C
-            0x56, # V
+POLL_KEYS = (0x4E # N
             0x42, # B
-            0x4E) # N
+            0x56, # V
+            0x43, # C
+            0x58, # X
+            0x5A, # Z
+            0x48, # H
+            0x47, # G
+            0x46, # F
+            0x44, # D
+            0x53, # S
+            0x41, # A
+            0x11, # VK_CONTROL
+            0x01) # VK_LBUTTON
 POLL_TIME = 1 / POLL_RATE
 MIN_INT = -32767
 MIN_INT_BYTES = MIN_INT.to_bytes(2, byteorder='little', signed=True)

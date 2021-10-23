@@ -18,20 +18,21 @@ KEYBOARD_TOGGLE = 0x4B # K
 MOUSE_TOGGLE = 0x4D # M
 
 # Max 31 keys
-TARGET_KEYS = [(0x01, -1), # VK_LBUTTON
-            (0x11, 29), # VK_CONTROL
-            (0x41, 30), # A
-            (0x53, 31), # S
-            (0x44, 32), # D
-            (0x46, 33), # F
-            (0x47, 34), # G
-            (0x48, 35), # H
-            (0x5A, 44), # Z
-            (0x58, 45), # X
-            (0x43, 46), # C
-            (0x56, 47), # V
+TARGET_KEYS = [(0x4E, 49), # N
             (0x42, 48), # B
-            (0x4E, 49)] # N
+            (0x56, 47), # V
+            (0x43, 46), # C
+            (0x58, 45), # X
+            (0x5A, 44), # Z
+            (0x48, 35), # H
+            (0x47, 34), # G
+            (0x46, 33), # F
+            (0x44, 32), # D
+            (0x53, 31), # S
+            (0x41, 30), # A
+            (0x11, 29), # VK_CONTROL
+            (0x01, -1)] # VK_LBUTTON
+            
 MIN_INT = -32767
 TARGET_KEYS.reverse()
 TARGET_KEYS = tuple(TARGET_KEYS)
