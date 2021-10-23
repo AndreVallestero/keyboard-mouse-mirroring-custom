@@ -1,7 +1,7 @@
 import socket, time, sys
 from ctypes import windll, Structure, c_long, byref
 
-RECV_ADDR = '99.231.254.55'
+RECV_ADDR = '99.231.254.92'
 RECV_PORT = 46331
 POLL_RATE = 58
 X_RES = 1920
@@ -9,6 +9,7 @@ Y_RES = 1080
 
 KEYBOARD_TOGGLE = 0x4B # K
 MOUSE_TOGGLE = 0x4D # M
+COMBO_KEY = 0x39 # 0
 
 # Max 31 keys
 POLL_KEYS = (0x01, # VK_LBUTTON
@@ -50,6 +51,7 @@ print('Response recieved from reciever @' , resAddr)
 mousePos = POINT()
 wapi = windll.user32
 prevMkState = -1
+prevComboState = -1
 
 nextHeartbeat = 0
 while True:
@@ -79,9 +81,19 @@ while True:
         xPosBytes = (mousePos.x // X_RES_RATIO).to_bytes(2, byteorder='little', signed=True)
         yPosBytes = (mousePos.y // Y_RES_RATIO).to_bytes(2, byteorder='little', signed=True) 
 
+    comboState = int(wapi.GetKeyState(COMBO_KEY) not in (0, 1))
+    if comboState != prevComboState:
+        wapi.keybd_event("0x45", 18, comboState, 0) # MF E
+        wapi.keybd_event("0x52", 19, comboState, 0) # MF R
+    prevComboState = comboState
+
     keyStatesInt = 0
     for key in POLL_KEYS:
-        keyState = int(wapi.GetKeyState(key) not in (0, 1))
+        # Yuumi Q, R, Everfrost, Redemption
+        if comboState == 0 && key in (0x41, 0x46, 0x58, 0x43):
+            keyState = 0
+        else:
+            keyState = int(wapi.GetKeyState(key) not in (0, 1))
         keyStatesInt = (keyStatesInt + keyState) << 1
     keyStatesInt += int(keyboardMirroring)
     keyStatesBytes = keyStatesInt.to_bytes(4, byteorder='little')
