@@ -90,8 +90,7 @@ while True:
     for key in POLL_KEYS:
         # Yuumi Q, R, Everfrost X, Redemption C
         if comboState == 1 and key in (0x41, 0x46, 0x58, 0x43):
-            keyState = 0
-            print("comboing key", key)
+            keyState = 1
         else:
             keyState = int(wapi.GetKeyState(key) not in (0, 1))
         keyStatesInt = (keyStatesInt + keyState) << 1
