@@ -6,6 +6,8 @@
 
 ## Notes
 
+- Receiver must be started before trasmitter
+- Receiver must portforward if on separate networks
 - Set ADC summoners spells to T and Y
 - Set Yuumi abilities to A, S, D, F, G, H
 - Set Yuumi items to Z, X, C, V, B, N (suggested ward on V)
