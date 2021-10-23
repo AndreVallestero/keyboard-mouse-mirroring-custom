@@ -17,3 +17,7 @@
 - Set camera locked offset to the same
 - Set zoom, and all interface settings to the same
 - Use f keys (f1-f5) to use Yuumi perspective, useful when attached to other players
+
+## TODO
+
+- Add high precision timestamp to packet to ignore out of order packets
