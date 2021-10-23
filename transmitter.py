@@ -24,7 +24,7 @@ POLL_KEYS = (0x01, # VK_LBUTTON
             0x58, # X
             0x43, # C
             0x56, # V
-            0x52, # B
+            0x42, # B
             0x4E) # N
 POLL_TIME = 1 / POLL_RATE
 MIN_INT = -32767
