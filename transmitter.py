@@ -11,10 +11,7 @@ KEYBOARD_TOGGLE = 0x4B # K
 MOUSE_TOGGLE = 0x4D # M
 
 # Max 31 keys
-POLL_KEYS = (0x01, # VK_LBUTTON
-            0x02, # VK_RBUTTON
-            0x11, # VK_CONTROL
-            0x41, # A
+POLL_KEYS = (0x41, # A
             0x53, # S
             0x44, # D
             0x46, # F
