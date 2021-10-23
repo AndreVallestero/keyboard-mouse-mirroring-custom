@@ -1,3 +1,13 @@
+#!/usr/bin/env python3
+# Key scan code reference: https://msdn.microsoft.com/en-us/ie/aa299374(v=vs.100)
+# VK code reference: https://docs.microsoft.com/en-us/windows/desktop/inputdev/virtual-key-codes
+
+# Packet breakdown, 64 bits or 8 bytes
+# [bits] (type) description
+# [0,15] (int16) xPos of mouse
+# [16,31] (int16) yPos of mouse
+# [32, 65] (uint32) key state where each bit holds the keystate, bit 65 is keyboard state
+
 import socket, time, sys
 from ctypes import windll, Structure, c_long, byref
 
