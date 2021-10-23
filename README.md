@@ -11,6 +11,7 @@
 - Set Yuumi items to Z, X, C, V, B, N (suggested ward on V)
 - Set Yuumi Everfrost to X and Redemption on C
 - Always play locked screen
-- Hover over Yuumi portrait and press S to auto attach
+- Hover over Yuumi portrait and press S to auto attach / auto path
 - Set camera locked offset to the same
 - Set zoom, and all interface settings to the same
+- Use f keys (f1-f5) to use Yuumi perspective, useful when attached to other players
