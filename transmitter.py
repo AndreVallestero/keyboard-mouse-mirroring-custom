@@ -12,7 +12,7 @@ MOUSE_TOGGLE = 0x4D # M
 COMBO_KEY = 0x30 # 0
 
 # Max 31 keys
-POLL_KEYS = (0x4E # N
+POLL_KEYS = (0x4E, # N
             0x42, # B
             0x56, # V
             0x43, # C
