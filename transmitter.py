@@ -9,7 +9,7 @@ Y_RES = 1080
 
 KEYBOARD_TOGGLE = 0x4B # K
 MOUSE_TOGGLE = 0x4D # M
-COMBO_KEY = 0x39 # 0
+COMBO_KEY = 0x30 # 0
 
 # Max 31 keys
 POLL_KEYS = (0x01, # VK_LBUTTON
@@ -81,7 +81,6 @@ while True:
         yPosBytes = (mousePos.y // Y_RES_RATIO).to_bytes(2, byteorder='little', signed=True) 
 
     comboState = int(wapi.GetKeyState(COMBO_KEY) not in (0, 1))
-    print(comboState)
     if keyboardMirroring and comboState != prevComboState:
         print("Comboing")
         wapi.keybd_event(0x45, 18, comboState, 0) # MF E
