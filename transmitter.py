@@ -25,8 +25,7 @@ POLL_KEYS = (0x01, # VK_LBUTTON
             0x43, # C
             0x56, # V
             0x52, # B
-            0x4E, # N
-            0x4D) # M
+            0x4E) # N
 POLL_TIME = 1 / POLL_RATE
 MIN_INT = -32767
 MIN_INT_BYTES = MIN_INT.to_bytes(2, byteorder='little', signed=True)
@@ -82,6 +81,7 @@ while True:
         yPosBytes = (mousePos.y // Y_RES_RATIO).to_bytes(2, byteorder='little', signed=True) 
 
     comboState = int(wapi.GetKeyState(COMBO_KEY) not in (0, 1))
+    print(comboState)
     if keyboardMirroring and comboState != prevComboState:
         print("Comboing")
         wapi.keybd_event(0x45, 18, comboState, 0) # MF E
@@ -90,7 +90,7 @@ while True:
 
     keyStatesInt = 0
     for key in POLL_KEYS:
-        # Yuumi Q, R, Everfrost, Redemption
+        # Yuumi Q, R, Everfrost X, Redemption C
         if comboState == 0 and key in (0x41, 0x46, 0x58, 0x43):
             keyState = 0
         else:
