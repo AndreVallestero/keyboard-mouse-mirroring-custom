@@ -82,8 +82,8 @@ while True:
 
     comboState = int(wapi.GetKeyState(COMBO_KEY) not in (0, 1))
     if keyboardMirroring and comboState != prevComboState:
-        wapi.keybd_event(0x45, 18, 1 - comboState, 0) # MF E
-        wapi.keybd_event(0x52, 19, 1 - comboState, 0) # MF R
+        wapi.keybd_event(0x45, 18, 2 * comboState, 0) # MF E
+        wapi.keybd_event(0x52, 19, 2 * comboState, 0) # MF R
     prevComboState = comboState
 
     keyStatesInt = 0
@@ -91,6 +91,7 @@ while True:
         # Yuumi Q, R, Everfrost X, Redemption C
         if comboState == 1 and key in (0x41, 0x46, 0x58, 0x43):
             keyState = 0
+            print("comboing key", key)
         else:
             keyState = int(wapi.GetKeyState(key) not in (0, 1))
         keyStatesInt = (keyStatesInt + keyState) << 1
