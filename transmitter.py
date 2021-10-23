@@ -82,7 +82,8 @@ while True:
         yPosBytes = (mousePos.y // Y_RES_RATIO).to_bytes(2, byteorder='little', signed=True) 
 
     comboState = int(wapi.GetKeyState(COMBO_KEY) not in (0, 1))
-    if comboState != prevComboState:
+    if keyboardMirroring and comboState != prevComboState:
+        print("Comboing")
         wapi.keybd_event("0x45", 18, comboState, 0) # MF E
         wapi.keybd_event("0x52", 19, comboState, 0) # MF R
     prevComboState = comboState
