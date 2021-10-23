@@ -19,7 +19,6 @@ MOUSE_TOGGLE = 0x4D # M
 
 # Max 31 keys
 TARGET_KEYS = [(0x01, -1), # VK_LBUTTON
-            (0x02, -1), # VK_RBUTTON
             (0x11, 29), # VK_CONTROL
             (0x41, 30), # A
             (0x53, 31), # S
